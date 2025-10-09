@@ -24,7 +24,6 @@ public class DepartmentMicroserviceApplication {
                     .depName("Marketing")
                     .depCode("MK")
             .build());
-
         };
     }
 }

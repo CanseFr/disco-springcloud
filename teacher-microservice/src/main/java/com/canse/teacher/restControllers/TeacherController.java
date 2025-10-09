@@ -1,5 +1,6 @@
 package com.canse.teacher.restControllers;
 
+import com.canse.teacher.dto.ApiResponseDto;
 import com.canse.teacher.dto.TeacherDto;
 import com.canse.teacher.service.TeacherService;
 import lombok.AllArgsConstructor;
@@ -18,7 +19,7 @@ public class TeacherController {
     private TeacherService teacherService;
 
     @GetMapping("{id}")
-    public ResponseEntity<TeacherDto> getTeacherById(@PathVariable("id") Long id) {
-        return new ResponseEntity<TeacherDto>(teacherService.getTeacherById(id), HttpStatus.OK);
+    public ResponseEntity<ApiResponseDto> getTeacherById(@PathVariable("id") Long id) {
+        return new ResponseEntity<ApiResponseDto>(teacherService.getTeacherById(id), HttpStatus.OK);
     }
 }
