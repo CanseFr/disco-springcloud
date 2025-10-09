@@ -15,20 +15,27 @@ Le but du project et d'apprendre le fonctionnement de Springcloud
 
 ---
 
+## 🔧 Services
+
+* Departments : Port 8080
+* teachers : Ports 8081
+
+---
+
 ## 📂 Structure de configuration
 
 Chaque microservice utilise un fichier `application.yaml` similaire, qui contient :
 
 ```yaml
 server:
-  port: 8081
+  port: 80xx
 
 spring:
   application:
-    name: teacher-microservice
+    name: xxxxx-microservice
 
   datasource:
-    url: 'jdbc:h2:mem:teacherdb'
+    url: 'jdbc:h2:mem:xxxxdb'
 
   h2:
     console:
@@ -54,12 +61,22 @@ management:
 
 ---
 
-## 🌐 URLs utiles
+## 🌐 URLs utiles par service
+
+### Teachers :
 
 | Fonctionnalité     | URL                                                                    |
 | ------------------ | ---------------------------------------------------------------------- |
 | Console H2         | [http://localhost:8081/h2-console/](http://localhost:8081/h2-console/) |
 | Endpoints Actuator | [http://localhost:8081/actuator](http://localhost:8081/actuator)       |
+
+### Departments :
+
+| Fonctionnalité     | URL                                                                    |
+| ------------------ |------------------------------------------------------------------------|
+| Console H2         | [http://localhost:8080/h2-console/](http://localhost:8080/h2-console/) |
+| Endpoints Actuator | [http://localhost:8080/actuator](http://localhost:8080/actuator)       |
+
 
 **Identifiants H2 :**
 
