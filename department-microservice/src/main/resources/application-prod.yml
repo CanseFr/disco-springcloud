@@ -1,0 +1,8 @@
+spring:
+  config:
+    activate:
+      on-profile: "prod"
+
+author:
+  name: "Canse Sisi [PROD]"
+  email: "ouaisouais@gmail.com [PROD]"

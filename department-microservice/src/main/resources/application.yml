@@ -1,4 +1,10 @@
 spring:
+#  profiles:
+#    active: "prod"
+  config:
+    import:
+      - "application-prod.yml"
+      - "application-qa.yml"
   application:
     name: department-microservice
 
