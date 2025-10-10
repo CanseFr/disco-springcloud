@@ -28,3 +28,9 @@ management:
 eureka:
   instance:
     prefer-ip-address: true
+
+build:
+  version: 1.0
+author:
+  name: "Canse Sisi"
+  email: "ouaisouais@gmail.com"
