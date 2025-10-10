@@ -20,18 +20,18 @@ public class GatewayServerApplication {
 //    plutot que sur :
 //    - http://localhost:8888/DEPARTMENT-MICROSERVICE/api/departments/MK
 
-    @Bean
-    public RouteLocator MyRouteConfig(RouteLocatorBuilder routeLocatorBuilder) {
-        return routeLocatorBuilder.routes()
-                .route(p -> p
-                        .path("/api/departments/**")
-                        .uri("lb://DEPARTMENT-MICROSERVICE")
-                )
-                .route(p -> p
-                        .path("/api/teachers/**")
-                        .uri("lb://TEACHER-MICROSERVICE")
-                )
-                .build();
-    }
+//    @Bean
+//    public RouteLocator MyRouteConfig(RouteLocatorBuilder routeLocatorBuilder) {
+//        return routeLocatorBuilder.routes()
+//                .route(p -> p
+//                        .path("/api/departments/**")
+//                        .uri("lb://DEPARTMENT-MICROSERVICE")
+//                )
+//                .route(p -> p
+//                        .path("/api/teachers/**")
+//                        .uri("lb://TEACHER-MICROSERVICE")
+//                )
+//                .build();
+//    }
 
 }

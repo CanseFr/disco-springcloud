@@ -15,6 +15,15 @@ spring:
             locator:
               enabled: false
               lower-case-service-id: true
+          routes:
+            - id: r1
+              uri: lb://DEPARTMENT-MICROSERVICE
+              predicates:
+                - Path= /api/departments/**
+            - id: r2
+              uri: lb://TEACHER-MICROSERVICE
+              predicates:
+                - Path= /api/teachers/**
   eureka:
     client:
       service-url:
