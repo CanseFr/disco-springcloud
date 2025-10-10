@@ -8,10 +8,12 @@ spring:
       enabled: false
     discovery:
       enabled: true
-#  gateway:
-#    discovery:
-#      locator:
-#        enabled: true
+    gateway:
+      server:
+        webflux:
+          discovery:
+            locator:
+              enabled: true
   eureka:
     client:
       service-url:
@@ -24,6 +26,3 @@ management:
   endpoint:
     gateway:
       access: unrestricted
-eureka:
-  instance:
-    prefer-ip-address: true
