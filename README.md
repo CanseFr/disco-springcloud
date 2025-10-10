@@ -77,6 +77,9 @@ management:
 | Console H2         | [http://localhost:8080/h2-console/](http://localhost:8080/h2-console/) |
 | Endpoints Actuator | [http://localhost:8080/actuator](http://localhost:8080/actuator)       |
 
+### Api Gateway route register
+
+http://localhost:8888/actuator/gateway/routes
 
 **Identifiants H2 :**
 
