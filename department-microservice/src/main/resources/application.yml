@@ -1,6 +1,6 @@
 spring:
-#  profiles:
-#    active: "prod"
+  profiles:
+    active: "qa"
   config:
     import:
       - "application-prod.yml"
