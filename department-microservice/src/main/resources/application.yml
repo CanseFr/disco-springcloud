@@ -1,10 +1,8 @@
 spring:
   profiles:
-    active: "qa"
+    active: "prod"
   config:
-    import:
-      - "application-prod.yml"
-      - "application-qa.yml"
+    import: "optional:configserver:http://localhost:9999"
   application:
     name: department-microservice
 
@@ -19,7 +17,7 @@ spring:
       ddl-auto: update
   cloud:
     config:
-      enabled: false
+      enabled: true
     discovery:
       enabled: true
   eureka:
@@ -34,9 +32,3 @@ management:
 eureka:
   instance:
     prefer-ip-address: true
-
-build:
-  version: 1.0
-author:
-  name: "Canse Sisi"
-  email: "ouaisouais@gmail.com"
