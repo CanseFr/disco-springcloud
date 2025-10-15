@@ -33,6 +33,22 @@ services:
       configuration-server:
         condition: service_healthy
 
+  teacher-microservice:
+    build: ./teacher-microservice
+    container_name: teacher-microservice
+    ports:
+      - "8081:8081"
+    environment:
+      - DISCOVERY_SERVICE_URL=http://eureka-server:8761/eureka
+      - CONFIG_SERVICE_URL=http://configuration-server:9999
+    healthcheck:
+      test: "curl --fail --silent localhost:8081/actuator/health | grep UP || exit 1"
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+      configuration-server:
+        condition: service_healthy
+
 
   gateway-server:
     build: ./gateway-server
@@ -45,4 +61,20 @@ services:
       test: "curl --fail --silent localhost:8888/actuator/health | grep UP || exit 1"
     depends_on:
       eureka-server:
+        condition: service_healthy
+
+  department-microservice-2:
+    build: ./department-microservice
+    container_name: department-microservice-2
+    ports:
+      - "8084:8080"
+    environment:
+      - DISCOVERY_SERVICE_URL=http://eureka-server:8761/eureka
+      - CONFIG_SERVICE_URL=http://configuration-server:9999
+    healthcheck:
+      test: "curl --fail --silent localhost:8084/actuator/health | grep UP || exit 1"
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+      configuration-server:
         condition: service_healthy
