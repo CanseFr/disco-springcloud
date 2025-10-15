@@ -1,0 +1,48 @@
+services:
+  eureka-server:
+    build: ./eureka-server
+    container_name: eureka-server
+    ports:
+      - "8761:8761"
+    healthcheck:
+      test: "curl --fail --silent localhost:8761/actuator/health | grep UP || exit 1"
+      interval: 10s
+
+  configuration-server:
+    build: ./configuration-server
+    container_name: configuration-server
+    ports:
+      - "9999:9999"
+    healthcheck:
+      test: "curl --fail --silent localhost:9999/actuator/health | grep UP || exit 1"
+      interval: 10s
+
+  department-microservice:
+    build: ./department-microservice
+    container_name: department-microservice
+    ports:
+      - "8080:8080"
+    environment:
+      - DISCOVERY_SERVICE_URL=http://eureka-server:8761/eureka
+      - CONFIG_SERVICE_URL=http://configuration-server:9999
+    healthcheck:
+      test: "curl --fail --silent localhost:8080/actuator/health | grep UP || exit 1"
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+      configuration-server:
+        condition: service_healthy
+
+
+  gateway-server:
+    build: ./gateway-server
+    container_name: gateway-server
+    ports:
+      - "8888:8888"
+    environment:
+      - DISCOVERY_SERVICE_URL=http://eureka-server:8761/eureka
+    healthcheck:
+      test: "curl --fail --silent localhost:8888/actuator/health | grep UP || exit 1"
+    depends_on:
+      eureka-server:
+        condition: service_healthy
