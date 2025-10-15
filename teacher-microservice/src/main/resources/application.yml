@@ -2,14 +2,23 @@ server:
   port: 8081
 
 spring:
+  config:
+#    import: optional:configserver:${CONFIG_SERVICE_URL:http://localhost:9999}
+    import: optional:configserver:http://localhost:9999
   application:
     name: teacher-microservice
   profiles:
     active: prod
 
+  rabbitmq:
+    host: "localhost"
+    port: 5672
+    username: guest
+    password: guest
+
   cloud:
     config:
-      enabled: false
+      enabled: true
     discovery:
       enabled: true
 
@@ -30,7 +39,10 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     serviceUrl:
-      defaultZone: http://eureka-server:8761/eureka
+      defaultZone: http://localhost:8761/eureka
+#      defaultZone: http://eureka-server:8761/eureka
+  #      defaultZone: ${DISCOVERY_SERVICE_URL:http://localhost:8761/eureka}
+
   instance:
     prefer-ip-address: true
 
